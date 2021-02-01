@@ -1,0 +1,37 @@
+.container
+  .row
+    %div
+    .offset-md-1.col-md-10
+      .card.text-dark.p-5.border-primary
+        .card-body
+          %h1 Listing products
+          .row.col-md-12
+            = link_to 'New Product', new_product_path
+            .ml-auto
+              = link_to 'Atras',home_administrador_path
+          .col-md-12.table-responsive
+            %table.table-striped.table.mt-3
+              %thead
+                %tr
+                  %th Nombre
+                  %th Descripcion
+                  %th Precio
+                  %th Stock
+                  %th User
+                  %th
+                  %th
+                  %th
+
+              %tbody
+                - @products.each do |product|
+                  %tr
+                    %td= product.p_name
+                    %td= product.p_description
+                    %td= product.p_price
+                    %td= product.p_quantify
+                    %td= product.user.email
+                    %td= link_to 'Show', product, class: "btn btn-block btn-info"
+                    %td= link_to 'Edit', edit_product_path(product), class: "btn btn-block btn-primary"
+                    %td= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-block btn-warning"
+            .flickr_pagination 
+              =will_paginate @products

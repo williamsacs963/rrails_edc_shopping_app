@@ -1,0 +1,35 @@
+.container
+  .row
+    %div
+    .offset-md-1.col-md-10
+      .card.text-dark.p-5.border-primary
+        .card-body
+          %p
+            %b Nombre:
+            = @product.p_name
+          %p
+            %b Description:
+            = @product.p_description
+          %p
+            %b Precio:
+            = @product.p_price
+          %p
+            %b Stock:
+            = @product.p_quantify
+          %p
+            %b Enviados:
+            = @product.p_send
+          %p
+            %b Existencia:
+            = @product.p_avalible
+          %p
+            %b Categorias:
+            - @product.categories.each do |category|
+              %p= category.name
+          %p
+            %b User:
+            = @product.user.email
+          -if can? :update,@product 
+            = link_to 'Edit', edit_product_path(@product)
+            \|
+          = link_to 'Back', products_path

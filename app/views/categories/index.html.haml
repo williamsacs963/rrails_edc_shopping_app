@@ -1,0 +1,29 @@
+.container
+  .row
+    %div
+    .offset-md-1.col-md-10
+      .card.text-dark.p-5.border-primary
+        .card-body
+          %h1 Listing categories
+          .row.col-md-12
+            = link_to 'New Category', new_category_path
+            .ml-auto
+              = link_to 'Atras',home_administrador_path
+          .col-md-12.table-responsive
+            %table.table.mt-3
+              %thead
+                %tr
+                  %th Name
+                  %th Description
+                  %th
+                  %th
+                  %th
+
+              %tbody
+                - @categories.each do |category|
+                  %tr
+                    %td= category.name
+                    %td= category.description
+                    %td= link_to 'Show', category, class: "btn btn-block btn-info"
+                    %td= link_to 'Edit', edit_category_path(category), class: "btn btn-block btn-primary"
+                    %td= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-block btn-warning"

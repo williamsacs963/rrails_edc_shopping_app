@@ -1,0 +1,13 @@
+.container
+  .row
+    %div
+    .offset-md-1.col-md-10
+      .card.text-dark.p-5.border-primary
+        .card-body
+          - if !@products.empty?
+            -@products.each do |product|
+              = link_to product do
+                %h5=product.p_name    
+          - else
+            %h2.text-center El producto no existe :c
+            

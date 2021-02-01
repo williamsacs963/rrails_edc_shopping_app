@@ -1,0 +1,20 @@
+.container
+  .row
+    %div
+    .offset-md-1.col-md-10
+      .card.text-dark.p-5.border-primary
+        .card-body
+          = form_for @category, builder: BootstrapFormBuilder do |f|
+            %h1.mb-4.text-center=title + " Categoria" || "Titulo"
+            .row
+              = f.errors
+              = f.label :name
+              = f.text_field :name, placeholder: "Minimo 4 caracteres"
+              = f.label :description
+              = f.text_area :description, placeholder: "Minimo 10 caracteres"
+              .col-md-1
+              - if title != "Crear"
+                = link_to 'Show', @category, class: "col-md-3 btn btn-link"
+              = link_to 'Back', categories_path, class: "col-md-4 btn btn-link"
+              = f.submit "#{title}"
+

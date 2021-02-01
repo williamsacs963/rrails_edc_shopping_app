@@ -1,0 +1,18 @@
+.container
+  .row
+    %div
+    .offset-md-1.col-md-10
+      .card.text-dark.p-5.border-primary
+        .card-body
+          %p
+            %b Name:
+            = @category.name
+          %p
+            %b Description:
+            = @category.description
+          // -@category.products.each do |product|
+          //  %p=product.p_name
+          -if can? :update, @category
+            = link_to 'Edit', edit_category_path(@category)
+            \|
+          = link_to 'Back', root_path

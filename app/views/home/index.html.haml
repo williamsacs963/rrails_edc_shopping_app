@@ -1,0 +1,14 @@
+.mb-5
+    .container-fluid
+        .row
+            -@products.each do |product|
+                .col-md-3.col-sm-12.my-3
+                    .card
+                        .card-body
+                            %h3.text-center.card-title=product.p_name
+                            %p.text-right
+                                =link_to product, class:"btn btn-info mx-1" do
+                                    %i.fa.fa-fw.fa-eye.fa-lg
+                                =render "partials/buttons", product:product
+        .flickr_pagination
+            =will_paginate @products

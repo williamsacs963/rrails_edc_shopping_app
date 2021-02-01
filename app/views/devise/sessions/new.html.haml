@@ -1,0 +1,19 @@
+.container
+  .row
+    %div
+    .offset-md-1.col-md-10
+      .card.text-dark.p-5.border-primary
+        .card-body
+          %h1.mb-4.text-center Iniciar sesión
+          = form_for(resource, as: resource_name, url: session_path(resource_name), builder: BootstrapFormBuilder) do |f|
+            .row
+              = f.errors
+              = f.label :email
+              = f.email_field :email, autofocus: true, autocomplete: "email"
+              = f.label :password
+              = f.password_field :password, autocomplete: "current-password"
+              - if devise_mapping.rememberable?
+                = f.label :remember_me
+                = f.check_box :remember_me
+              = render "devise/shared/links" 
+              = f.submit "Log in" 
